@@ -1,9 +1,11 @@
-import { axios } from '@/lib/axios';
+import { useNavigate } from 'react-router';
 import { Flex, Box, Text, VStack, Button } from '@chakra-ui/react';
 
 export const Landing = () => {
+  const navigate = useNavigate();
+
   const handleStart = async () => {
-    await axios.get('/test').then((res) => console.log(res.data));
+    navigate('/auth/register');
   };
 
   return (
