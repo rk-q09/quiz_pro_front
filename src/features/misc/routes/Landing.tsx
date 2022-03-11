@@ -5,7 +5,7 @@ export const Landing = () => {
   const navigate = useNavigate();
 
   const handleStart = async () => {
-    navigate('/auth/register');
+    navigate('/auth/signin');
   };
 
   return (
