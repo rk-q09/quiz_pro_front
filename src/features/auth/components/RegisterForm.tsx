@@ -1,7 +1,8 @@
 import { z } from 'zod';
 import { Box, Center } from '@chakra-ui/react';
-import { axios } from '@/lib/axios';
+
 import { Form, InputField } from '@/components/Form';
+import { useAuth } from '@/lib/auth';
 
 const schema = z.object({
   username: z
@@ -26,12 +27,13 @@ type RegisterFormProps = {
 };
 
 export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
+  const { register } = useAuth();
+
   return (
     <Box>
       <Form<RegisterValues>
         onSubmit={async (values) => {
-          const response = await axios.post('/users/signup', values);
-          console.log('dev: on RegisterForm', response);
+          await register(values);
           onSuccess();
         }}
         schema={schema}
