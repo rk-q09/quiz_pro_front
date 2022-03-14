@@ -1,11 +1,18 @@
 import { useNavigate } from 'react-router';
 import { Flex, Box, Text, VStack, Button } from '@chakra-ui/react';
 
+import { useAuth } from '@/lib/auth';
+
 export const Landing = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
-  const handleStart = async () => {
-    navigate('/auth/signin');
+  const handleStart = () => {
+    if (user) {
+      navigate('/app');
+    } else {
+      navigate('/auth/login');
+    }
   };
 
   return (

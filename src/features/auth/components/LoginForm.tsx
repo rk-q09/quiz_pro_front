@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { Box, Center } from '@chakra-ui/react';
+import {Center, Button } from '@chakra-ui/react';
 
 import { Form, InputField } from '@/components/Form';
 import { useAuth } from '@/lib/auth';
@@ -22,7 +22,7 @@ type LoginFormProps = {
 };
 
 export const LoginForm = ({ onSuccess }: LoginFormProps) => {
-  const { login } = useAuth();
+  const { login, isLoggingIn } = useAuth();
 
   return (
     <div>
@@ -48,7 +48,7 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
               registration={register('password')}
             />
             <Center>
-              <Box
+              {/* <Box
                 as="button"
                 type="submit"
                 width="full"
@@ -59,7 +59,10 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
                 _hover={{ bg: 'purple.700' }}
               >
                 Log in
-              </Box>
+              </Box> */}
+              <Button isLoading={isLoggingIn} type="submit">
+                Log in
+              </Button>
             </Center>
           </>
         )}

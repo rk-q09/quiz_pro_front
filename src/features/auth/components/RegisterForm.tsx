@@ -24,7 +24,7 @@ type RegisterValues = {
 
 type RegisterFormProps = {
   onSuccess: () => void;
-};
+}; 
 
 export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
   const { register } = useAuth();
