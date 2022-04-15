@@ -1,5 +1,6 @@
 import { z } from 'zod';
-import {Center, Button } from '@chakra-ui/react';
+import {Center, Button, Link } from '@chakra-ui/react';
+import { Link as ReachLink } from 'react-router-dom';
 
 import { Form, InputField } from '@/components/Form';
 import { useAuth } from '@/lib/auth';
@@ -25,48 +26,44 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
   const { login, isLoggingIn } = useAuth();
 
   return (
-    <div>
-      <Form<LoginValues>
-        onSubmit={async (values) => {
-          await login(values);
-          onSuccess();
-        }}
-        schema={schema}
-      >
-        {({ register, formState }) => (
-          <>
-            <InputField
-              type="email"
-              label="EMAIL"
-              error={formState.errors['email']}
-              registration={register('email')}
-            />
-            <InputField
-              type="password"
-              label="PASSWORD"
-              error={formState.errors['password']}
-              registration={register('password')}
-            />
-            <Center>
-              {/* <Box
-                as="button"
-                type="submit"
-                width="full"
-                p="3"
-                mt="3"
-                borderRadius="md"
-                bg="purple.800"
-                _hover={{ bg: 'purple.700' }}
-              >
+    <Form<LoginValues>
+      onSubmit={async (values) => {
+        await login(values);
+        onSuccess();
+      }}
+      schema={schema}
+    >
+      {({ register, formState }) => (
+        <>
+          <InputField
+            type="email"
+            label="EMAIL"
+            error={formState.errors['email']}
+            registration={register('email')}
+          />
+          <InputField
+            type="password"
+            label="PASSWORD"
+            error={formState.errors['password']}
+            registration={register('password')}
+          />
+          <Center>
+            <Button 
+              isLoading={isLoggingIn} 
+              type="submit" 
+              width="full"
+              bg="purple.800"
+              _hover={{ bg: "purple.700" }}>
                 Log in
-              </Box> */}
-              <Button isLoading={isLoggingIn} type="submit">
-                Log in
-              </Button>
-            </Center>
-          </>
-        )}
-      </Form>
-    </div>
+            </Button>
+          </Center>
+          <Center mt={4} fontSize="xs">
+            <Link as={ReachLink} to="../register">
+              アカウントを作成する
+            </Link>
+          </Center>
+        </>
+      )}
+    </Form>
   );
 };

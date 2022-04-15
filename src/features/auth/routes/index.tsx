@@ -7,7 +7,7 @@ export const AuthRoutes = () => {
   return (
     <Routes>
       <Route path="register" element={<Register />} />
-      <Route path="signin" element={<Login />} />
+      <Route path="login" element={<Login />} />
     </Routes>
   );
 };
