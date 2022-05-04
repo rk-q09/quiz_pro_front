@@ -3,7 +3,7 @@ import { Container } from '@chakra-ui/react';
 
 export const ContentLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <Container color="white" width="full">
+    <Container maxW="4xl" color="white">
       {children}
     </Container>
   );

@@ -5,7 +5,7 @@ import storage from '@/utils/storage';
 
 function authRequestInterceptor(config: AxiosRequestConfig) {
   if (config.headers === undefined) {
-    config.headers = {}
+    config.headers = {};
   }
   const token = storage.getToken();
   if (token) {

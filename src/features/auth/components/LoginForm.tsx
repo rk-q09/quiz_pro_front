@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import {Center, Button, Link } from '@chakra-ui/react';
+import { Center, Button, Link } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
 import { Form, InputField } from '@/components/Form';
@@ -48,13 +48,14 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
             registration={register('password')}
           />
           <Center>
-            <Button 
-              isLoading={isLoggingIn} 
-              type="submit" 
+            <Button
+              isLoading={isLoggingIn}
+              type="submit"
               width="full"
               bg="purple.800"
-              _hover={{ bg: "purple.700" }}>
-                Log in
+              _hover={{ bg: 'purple.700' }}
+            >
+              Log in
             </Button>
           </Center>
           <Center mt={4} fontSize="xs">

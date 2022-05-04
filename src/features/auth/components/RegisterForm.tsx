@@ -24,7 +24,7 @@ type RegisterValues = {
 
 type RegisterFormProps = {
   onSuccess: () => void;
-}; 
+};
 
 export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
   const { register, isRegistering } = useAuth();
@@ -59,13 +59,14 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
               registration={register('password')}
             />
             <Center>
-              <Button 
-                isLoading={isRegistering} 
-                type="submit" 
+              <Button
+                isLoading={isRegistering}
+                type="submit"
                 width="full"
-                bg="purple.800" 
-                _hover={{ bg: "purple.700" }}>
-                  Sign Up
+                bg="purple.800"
+                _hover={{ bg: 'purple.700' }}
+              >
+                Sign Up
               </Button>
             </Center>
           </>

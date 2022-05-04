@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ChakraProvider } from '@chakra-ui/react';
-import '@fontsource/noto-sans'
-import '@fontsource/noto-sans-jp'
+import '@fontsource/noto-sans';
+import '@fontsource/noto-sans-jp';
 
 import { theme } from '@/theme';
 import App from './App';

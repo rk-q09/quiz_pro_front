@@ -5,7 +5,6 @@ import { Notification } from './Notification';
 
 export const Notifications = () => {
   const { notifications, dismissNotification } = useNotificationStore();
-  console.log(notifications);
 
   return (
     <Flex

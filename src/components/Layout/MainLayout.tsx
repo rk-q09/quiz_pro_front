@@ -16,6 +16,7 @@ import { Link } from '@/components/Elements/Link';
 
 const Header = () => {
   const navigate = useNavigate();
+
   return (
     <Flex
       as="nav"
@@ -26,7 +27,7 @@ const Header = () => {
       color="white"
     >
       <Flex align="center">
-        <Heading as="h3" size="sm" letterSpacing={'tighter'}>
+        <Heading size="sm" letterSpacing={'normal'} ml={2}>
           Quiz Pro
         </Heading>
       </Flex>
@@ -39,7 +40,7 @@ const Header = () => {
         flexGrow={1}
       >
         <Icon as={LogoutIcon} w={6} h={6} />
-        <Link to="/app/quiz">
+        <Link to="/app/quiz/mypage">
           <Icon as={UserIcon} w={6} h={6} />
         </Link>
       </Stack>
@@ -48,7 +49,7 @@ const Header = () => {
         <Button
           size="sm"
           variant="outline"
-          _hover={{ bg: 'teal.700', borderColor: 'teal.700' }}
+          _hover={{ bg: 'primary.500', borderColor: 'primary.500' }}
           onClick={() => navigate('/app/quiz/new')}
         >
           Post a Quiz
@@ -67,7 +68,7 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <>
       <Header />
-      <Container>{children}</Container>
+      <Container color="white">{children}</Container>
     </>
   );
 };

@@ -22,7 +22,7 @@ export const DeleteQuiz = ({ id, userId }: DeleteQuizProps) => {
         if (window.confirm('Are you sure?')) await mutateAsync({ quizId: id });
       }}
     >
-      <Icon as={TrashIcon} w={5} h={5} />
+      <Icon as={TrashIcon} w={5} h={5} color="whiteAlpha.600"/>
     </Button>
   );
 };
