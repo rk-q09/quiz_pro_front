@@ -1,4 +1,14 @@
 import { extendTheme } from '@chakra-ui/react';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
+
+import Container from './components/container';
+
+const breakpoints = createBreakpoints({
+  sm: '599px',
+  md: '1024px',
+  lg: '1260px',
+  xl: '1560px',
+});
 
 export const theme = extendTheme({
   styles: {
@@ -20,4 +30,8 @@ export const theme = extendTheme({
       900: '#1D243D',
     },
   },
+  components: {
+    Container,
+  },
+  breakpoints,
 });

@@ -3,10 +3,21 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { Text } from '@chakra-ui/layout';
 import { useAuth } from '@/lib/auth';
 
+<<<<<<< HEAD
 const App = () => {
   return (
     <div>
       <Suspense 
+=======
+import { MainLayout } from '@/components/Layout/MainLayout';
+
+const QuizRoutes = lazy(() => import('@/features/quiz'));
+
+const App = () => {
+  return (
+    <MainLayout>
+      <Suspense
+>>>>>>> fed6061... feat: add styling
         fallback={
           <div>
             <p>Loading...</p>
@@ -14,7 +25,7 @@ const App = () => {
         }>
         <Outlet />
       </Suspense>
-    </div>
+    </MainLayout>
   );
 };
 
