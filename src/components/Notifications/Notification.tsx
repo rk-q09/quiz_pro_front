@@ -1,8 +1,11 @@
-import { Box, Text, Flex, VStack, Spacer } from '@chakra-ui/layout';
+import type { FC, ReactNode } from 'react';
+import { Box, Text, VStack, Spacer } from '@chakra-ui/layout';
 import { Icon, InfoIcon, CheckCircleIcon, WarningIcon } from '@chakra-ui/icons';
 import { XCircleIcon } from '@heroicons/react/solid';
 import { XIcon } from '@heroicons/react/solid';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, AnimatePresenceProps } from 'framer-motion';
+
+import { MotionFlex } from '@/components/FramerMotion';
 
 const icons = {
   info: <InfoIcon w={5} h={5} color="blue.500" />,
@@ -10,6 +13,10 @@ const icons = {
   warning: <WarningIcon w={5} h={5} color="orange.400" />,
   error: <Icon as={XCircleIcon} w={6} h={6} color="red.400" />,
 };
+
+const HackyAnimatePresence = AnimatePresence as unknown as FC<
+  AnimatePresenceProps & { children: ReactNode }
+>;
 
 export type NotificationProps = {
   notification: {
@@ -25,10 +32,9 @@ export const Notification = ({
   notification: { id, type, title, message },
   onDismiss,
 }: NotificationProps) => {
-  const MotionFlex = motion(Flex);
 
   return (
-    <AnimatePresence>
+    <HackyAnimatePresence>
       <MotionFlex
         w={80}
         h={20}
@@ -70,6 +76,6 @@ export const Notification = ({
           <Icon as={XIcon} w={4} h={4} color="gray.300" />
         </button>
       </MotionFlex>
-    </AnimatePresence>
+    </HackyAnimatePresence>
   );
 };
