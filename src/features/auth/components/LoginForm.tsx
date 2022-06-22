@@ -1,7 +1,7 @@
 import { z } from 'zod';
-import { Center, Button, Link } from '@chakra-ui/react';
-import { Link as ReachLink } from 'react-router-dom';
+import { Center, Button, Text } from '@chakra-ui/react';
 
+import { Link } from '@/components/Elements/Link';
 import { Form, InputField } from '@/components/Form';
 import { useAuth } from '@/lib/auth';
 
@@ -58,10 +58,12 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
               Log in
             </Button>
           </Center>
-          <Center mt={4} fontSize="xs">
-            <Link as={ReachLink} to="../register">
-              アカウントを作成する
-            </Link>
+          <Center mt={4}>
+            <Text size="md">
+              <Link to="../register">
+                アカウントを作成する
+              </Link>
+            </Text>
           </Center>
         </>
       )}

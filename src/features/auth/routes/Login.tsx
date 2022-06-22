@@ -6,7 +6,7 @@ export const Login = () => {
   const navigate = useNavigate();
   return (
     <Layout title="Log In">
-      <LoginForm onSuccess={() => navigate('/')} />
+      <LoginForm onSuccess={() => navigate('/app')} />
     </Layout>
   );
 };

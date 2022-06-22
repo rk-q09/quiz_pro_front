@@ -9,13 +9,21 @@ import {
   Icon,
   Divider,
 } from '@chakra-ui/react';
-import { UserIcon, LogoutIcon } from '@heroicons/react/solid';
+import { UserIcon } from '@heroicons/react/solid';
+import { LogoutIcon } from '@heroicons/react/outline';
 import { useNavigate } from 'react-router-dom';
 
+import { useAuth } from '@/lib/auth';
 import { Link } from '@/components/Elements/Link';
 
 const Header = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth(); 
+
+  const onLogout = async () => {
+    await logout();
+    navigate('/');
+  }
 
   return (
     <Flex
@@ -28,7 +36,9 @@ const Header = () => {
     >
       <Flex align="center">
         <Heading size="sm" letterSpacing={'normal'} ml={2}>
-          Quiz Pro
+          <Link to="/app">
+            Quiz Pro
+          </Link>
         </Heading>
       </Flex>
 
@@ -39,7 +49,14 @@ const Header = () => {
         width="auto"
         flexGrow={1}
       >
-        <Icon as={LogoutIcon} w={6} h={6} />
+        <Icon 
+          as={LogoutIcon} 
+          w={6} 
+          h={6} 
+          mb={1}
+          _hover={{ cursor: 'pointer' }} 
+          onClick={() => onLogout()}
+        />
         <Link to="/app/quiz/mypage">
           <Icon as={UserIcon} w={6} h={6} />
         </Link>
