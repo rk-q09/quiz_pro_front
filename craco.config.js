@@ -5,5 +5,16 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src/'),
     },
+    configure: {
+      module: {
+        rules: [
+          {
+            type: 'javascript/auto',
+            test: /\.mjs$/,
+            include: /node_modules/,
+          },
+        ],
+      },
+    },
   },
 };
