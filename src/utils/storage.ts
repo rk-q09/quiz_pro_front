@@ -1,3 +1,5 @@
+import { addDays } from 'date-fns';
+
 const storagePrefix = 'quiz_pro_';
 
 const storage = {
@@ -18,9 +20,11 @@ const storage = {
     );
   },
   setExpires: (expires: number) => {
+    const expiresAt = addDays(new Date(), expires);
+
     window.localStorage.setItem(
       `${storagePrefix}expires`,
-      JSON.stringify(expires)
+      JSON.stringify(expiresAt)
     );
   },
   clearExpires: () => {

@@ -1,4 +1,5 @@
 import { initReactQueryAuth } from 'react-query-auth';
+import { isBefore } from 'date-fns';
 
 import {
   loginWithEmailAndPassword,
@@ -11,6 +12,15 @@ import {
 } from '@/features/auth';
 import storage from '@/utils/storage';
 
+const checkExpiration = () => {
+  const expiresAt = storage.getExpires();
+  if (expiresAt) {
+    const isExpired = isBefore(new Date(expiresAt), new Date());
+    if (isExpired) return true
+  }
+  return false
+}
+
 async function handleUserResponse(data: UserResponse) {
   const { user, token, expiresIn } = data;
   storage.setToken(token);
@@ -19,6 +29,9 @@ async function handleUserResponse(data: UserResponse) {
 }
 
 async function loadUser() {
+  if (checkExpiration()) {
+    return null
+  }
   if (storage.getToken()) {
     const data = await getUser();
     return data;

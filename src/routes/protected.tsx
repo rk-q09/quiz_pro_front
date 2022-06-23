@@ -47,7 +47,7 @@ export const protectedRoutes = [
     children: [
       { path: '/app', element: <TopPage /> },
       { path: '/app/quiz/*', element: <QuizRoutes /> },
-      { path: '*', element: <Navigate to="." /> },
+      { path: '/app/*', element: <Navigate to="." /> },
     ],
   },
 ];
