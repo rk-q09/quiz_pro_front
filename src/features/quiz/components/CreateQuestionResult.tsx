@@ -45,11 +45,11 @@ export const CreateQuestionResult = () => {
           <Heading>{data.title}</Heading>
           <Button
             width="30%"
-            bg="whiteAlpha.800"
-            color="purple.800"
+            bg="primary.600"
+            color="whiteAlpha.800"
             border="2px"
-            borderColor="purple.800"
-            _hover={{ bg: 'purple.700', color: 'whiteAlpha.800' }}
+            borderColor="primary.600"
+            _hover={{ bg: 'primary.500', borderColor: 'primary.500', color: 'whiteAlpha.800' }}
             onClick={() => navigate(-1)}
           >
             入力画面に戻る
@@ -70,13 +70,13 @@ export const CreateQuestionResult = () => {
         const answer = Number(q.answer);
 
         return (
-          <Box key={i} bg="gray.700" borderRadius="md" p={5} mb={3}>
+          <Box key={i} bg="tertiary.700" borderRadius="md" p={5} mb={3}>
             <Heading size="md" mb={3}>第{++i}問目</Heading>
             <Box
               key={i}
               mb={3}
               p={5}
-              bg="gray.600"
+              bg="tertiary.600"
               borderRadius="md"
             >
               {q.content}
@@ -84,7 +84,7 @@ export const CreateQuestionResult = () => {
             {choices.map((choice, i) => { 
               const index = ++i;
               return(
-                <Flex key={i} color={answer === index ? "green.500" : ""} gap="2">
+                <Flex key={i} color={answer === index ? "secondary.400" : ""} gap="2">
                   {answer === index ? <CheckIcon mt={0.5} /> : null}
                   <Text key={i} mb={3}>{choice}</Text>
                 </Flex>
@@ -94,22 +94,22 @@ export const CreateQuestionResult = () => {
         );
       })}
 
-      <Flex mt={3} justifyContent="space-between">
+      <Flex mt={3} mb={20} justifyContent="space-between">
         <Button
           width="30%"
           bg="whiteAlpha.800"
-          color="purple.800"
+          color="primary.600"
           border="2px"
-          borderColor="purple.800"
-          _hover={{ bg: 'purple.700', color: 'whiteAlpha.800' }}
+          borderColor="primary.600"
+          _hover={{ bg: 'primary.500', borderColor: 'primary.500', color: 'primary.500' }}
           onClick={() => navigate(-1)}
         >
           入力画面に戻る
         </Button>
         <Button
           width="30%"
-          bg="purple.800"
-          _hover={{ bg: 'purple.700' }}
+          bg="primary.600"
+          _hover={{ bg: 'primary.500' }}
           onClick={onSubmit}
         >
           送信

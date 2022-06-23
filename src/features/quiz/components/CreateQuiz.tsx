@@ -1,4 +1,5 @@
-import { Center, Button, Heading, Divider } from '@chakra-ui/react';
+import { HStack, Button, Heading, Divider } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 import * as z from 'zod';
 import { useNavigate } from 'react-router-dom';
 
@@ -24,48 +25,45 @@ export const CreateQuiz = () => {
 
   return (
     <ContentLayout>
-      <Heading size="lg" mb={5}>
-        Post Quiz
-      </Heading>
-      <Form<CreateQuizDTO['data'], typeof schema>
-        id="create-quiz"
-        onSubmit={(values) => {
-          createQuizMutation
-            .mutateAsync({
-              data: {
-                title: values.title,
-                userId,
-              },
-            })
-            .then((res) => {
-              navigate(`./${res.id}`);
-            });
-        }}
-        schema={schema}
-      >
-        {({ register, formState }) => (
-          <>
-            <InputField
-              type="text"
-              label="TITLE"
-              error={formState.errors['title']}
-              registration={register('title')}
-            />
-            <Center>
+      <HStack justify="center">
+        <Form<CreateQuizDTO['data'], typeof schema>
+          id="create-quiz"
+          onSubmit={(values) => {
+            createQuizMutation
+              .mutateAsync({
+                data: {
+                  title: values.title,
+                  userId,
+                },
+              })
+              .then((res) => {
+                navigate(`./${res.id}`);
+              });
+          }}
+          schema={schema}
+        >
+          {({ register, formState }) => (
+            <HStack width="xl">
+              <InputField
+                type="text"
+                label="TITLE"
+                error={formState.errors['title']}
+                registration={register('title')}
+              />
               <Button
                 isLoading={createQuizMutation.isLoading}
                 type="submit"
-                width="full"
-                bg="purple.800"
-                _hover={{ bg: 'purple.700' }}
+                size="lg"
+                bg="primary.600"
+                _hover={{ bg: 'primary.500' }}
               >
-                Submit
+                <ArrowForwardIcon w={6} h={6}/>
               </Button>
-            </Center>
-          </>
-        )}
-      </Form>
-      <Divider mt={10} />
+            </HStack>
+          )}
+        </Form>
+      </HStack>
+      <Divider mt={5} />
     </ContentLayout>
   );
 };

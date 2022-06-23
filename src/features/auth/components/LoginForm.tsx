@@ -37,13 +37,13 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
         <>
           <InputField
             type="email"
-            label="EMAIL"
+            label="email"
             error={formState.errors['email']}
             registration={register('email')}
           />
           <InputField
             type="password"
-            label="PASSWORD"
+            label="password"
             error={formState.errors['password']}
             registration={register('password')}
           />
@@ -52,8 +52,9 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
               isLoading={isLoggingIn}
               type="submit"
               width="full"
-              bg="purple.800"
-              _hover={{ bg: 'purple.700' }}
+              mt={2}
+              bg="primary.600"
+              _hover={{ bg: 'primary.500' }}
             >
               Log in
             </Button>

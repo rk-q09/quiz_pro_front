@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Heading, Container, Button, Text } from '@chakra-ui/react';
+import { Heading, Container, Button } from '@chakra-ui/react';
 import * as z from 'zod';
 import { useParams, useNavigate} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -77,10 +77,7 @@ export const CreateQuestion = () => {
 
   return (
     <ContentLayout>
-      <Heading color="white" size="lg" mb={5}>
-        Create Question
-      </Heading>
-      <Text color="white" mb={3}>{questionNum + 1} 問目</Text>
+      <Heading size="md" mb={3}>{questionNum + 1} 問目</Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
           <Container color="white">
             <InputField
@@ -118,8 +115,8 @@ export const CreateQuestion = () => {
               type="submit"
               width="full"
               mt={3}
-              bg="purple.800"
-              _hover={{ bg: 'purple.700' }}
+              bg="primary.600"
+              _hover={{ bg: 'primary.500' }}
             >
               Next
             </Button>

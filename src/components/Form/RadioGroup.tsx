@@ -26,8 +26,8 @@ const RadioCard = (props: UseRadioProps & { children: ReactNode }) => {
         borderRadius="md"
         boxShadow="md"
         _checked={{ 
-          bg: "purple.400",
-          borderColor: "purple.400",
+          bg: "primary.600",
+          borderColor: "primary.600",
           color: 'white' 
         }}
         px={8}

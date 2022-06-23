@@ -32,6 +32,9 @@ export const theme = extendTheme({
       800: '#001932',
       900: '#001626',
     },
+    secondary: {
+      400: '#CBF04D'
+    },
     tertiary: {
       100: '#FAFAFC',
       200: '#E5E6EB',
