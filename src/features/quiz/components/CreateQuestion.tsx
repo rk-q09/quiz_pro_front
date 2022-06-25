@@ -83,26 +83,31 @@ export const CreateQuestion = () => {
             <InputField
               type="text"
               label="内容"
+              error={formState.errors['content']}
               registration={register('content')}
             />
             <InputField
               type="text"
               label="選択肢1"
+              error={formState.errors['choices1']}
               registration={register('choices1')}
             />
             <InputField
               type="text"
               label="選択肢2"
+              error={formState.errors['choices2']}
               registration={register('choices2')}
             />
             <InputField
               type="text"
               label="選択肢3"
+              error={formState.errors['choices3']}
               registration={register('choices3')}
             />
             <InputField
               type="text"
               label="選択肢4"
+              error={formState.errors['choices4']}
               registration={register('choices4')}
             />
             <RadioGroup<CreateQuestionDTO['data']>

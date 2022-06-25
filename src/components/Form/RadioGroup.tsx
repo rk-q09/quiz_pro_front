@@ -6,7 +6,8 @@ import {
   useRadioGroup,
   UseRadioProps,
   FormControl,
-  FormLabel
+  FormLabel,
+  FormErrorMessage
 } from '@chakra-ui/react';
 import {
   FieldValues,
@@ -59,6 +60,7 @@ export const RadioGroup = <TRadioValue extends FieldValues>(
           </RadioCard>
         ))}
       </HStack>
+      {error && (<FormErrorMessage>{error.message}</FormErrorMessage>)}
     </FormControl>
   );
 };
