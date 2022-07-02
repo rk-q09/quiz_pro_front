@@ -5,7 +5,7 @@ import { DeleteQuiz } from './DeleteQuiz';
 
 type QuizExcerptProps = {
   id: string;
-  userId?: string;
+  userId: string | null;
   title: string;
 };
 

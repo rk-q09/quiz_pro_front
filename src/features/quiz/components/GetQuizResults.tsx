@@ -11,6 +11,8 @@ type GetQuizResultsProps = {
 }
 
 export const GetQuizResults = ({ score, questions, answers }: GetQuizResultsProps) => {
+  console.log(answers);
+
   return (
     <ContentLayout>
       <Box my={5}>

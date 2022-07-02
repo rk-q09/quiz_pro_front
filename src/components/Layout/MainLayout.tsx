@@ -2,12 +2,13 @@ import type { ReactNode } from 'react';
 import {
   Box,
   Button,
-  Stack,
+  HStack,
   Heading,
   Flex,
   Container,
   Icon,
   Divider,
+  Spacer
 } from '@chakra-ui/react';
 import { UserIcon } from '@heroicons/react/solid';
 import { LogoutIcon } from '@heroicons/react/outline';
@@ -15,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '@/lib/auth';
 import { Link } from '@/components/Elements/Link';
+import { SearchQuiz } from '@/features/quiz/components/SearchQuiz';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -34,20 +36,24 @@ const Header = () => {
       padding={4}
       color="white"
     >
-      <Flex align="center">
+      <Box> 
         <Heading size="sm" letterSpacing={'normal'} ml={2}>
           <Link to="/app">
             Quiz Pro
           </Link>
         </Heading>
-      </Flex>
+      </Box>
 
-      <Stack
-        direction="row-reverse"
-        display="flex"
+      <Spacer />
+
+      <Box width={[null, "200px", "300px"]}>
+        <SearchQuiz />
+      </Box>
+
+      <Spacer />
+
+      <HStack
         alignItems="center"
-        width="auto"
-        flexGrow={1}
       >
         <Icon 
           as={LogoutIcon} 
@@ -60,9 +66,6 @@ const Header = () => {
         <Link to="/app/quiz/mypage">
           <Icon as={UserIcon} w={6} h={6} />
         </Link>
-      </Stack>
-
-      <Box display="block" ml={5}>
         <Button
           size="sm"
           variant="outline"
@@ -71,7 +74,8 @@ const Header = () => {
         >
           Post a Quiz
         </Button>
-      </Box>
+      </HStack>
+
       <Divider mt={2} color="whiteAlpha.500" />
     </Flex>
   );
