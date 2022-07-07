@@ -8,3 +8,7 @@ export type Quiz = {
     correctAnswer: number;
   }[];
 } & BaseEntity;
+
+export type QuizCount = {
+  count: number;
+};
