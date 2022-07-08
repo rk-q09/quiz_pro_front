@@ -15,11 +15,11 @@ export const QuizExcerpt = ({ id, userId, title }: QuizExcerptProps) => {
   return (
     <Flex
       justify="space-between"
-      bg="primary.600"
+      bg="primary.700"
       borderRadius="lg"
       p={5}
       h={100}
-      _hover={{ bg: "primary.500", cursor: "pointer" }} 
+      _hover={{ bg: "primary.600", cursor: "pointer" }} 
       onClick={() => navigate(`../${id}`)}
     >
       <Heading as="h2" size="md">

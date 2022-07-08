@@ -105,8 +105,8 @@ export const GetQuiz = () => {
             height={20}
             borderRadius="md"
             color="white"
-            bg="cyan.800"
-            _hover={{ cursor: 'pointer', bg: 'cyan.600' }}
+            bg="primary.600"
+            _hover={{ cursor: 'pointer', bg: 'primary.500' }}
             variants={choiceAnimation}
             key={index}
             onClick={() => answerQuestionHandler(++index)}

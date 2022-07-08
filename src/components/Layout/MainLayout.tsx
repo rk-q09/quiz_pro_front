@@ -37,7 +37,7 @@ const Header = () => {
       color="white"
     >
       <Box> 
-        <Heading size="sm" letterSpacing={'normal'} ml={2}>
+        <Heading size="sm" letterSpacing={'normal'} ml={2} _hover={{ color: 'secondary.400' }} >
           <Link to="/app">
             Quiz Pro
           </Link>
@@ -60,11 +60,11 @@ const Header = () => {
           w={6} 
           h={6} 
           mb={1}
-          _hover={{ cursor: 'pointer' }} 
+          _hover={{ cursor: 'pointer', color: 'secondary.400' }} 
           onClick={() => onLogout()}
         />
         <Link to="/app/quiz/mypage">
-          <Icon as={UserIcon} w={6} h={6} />
+          <Icon as={UserIcon} w={6} h={6} _hover={{ color: 'secondary.400' }}  />
         </Link>
         <Button
           size="sm"
