@@ -1,13 +1,5 @@
 import create from 'zustand';
-
-export type Question = {
-  content: string;
-  choices1: string;
-  choices2: string;
-  choices3: string;
-  choices4: string;
-  answer: string;
-}
+import { Question } from '@/features/quiz/types';
 
 type QuestionStore = {
   questions: Question[];

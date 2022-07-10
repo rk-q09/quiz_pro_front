@@ -4,8 +4,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { useQuiz } from '../api/getQuiz';
 import { createQuestion } from '../api/createQuestion';
+import { Question } from '../types';
 import { useQuestionStore } from '@/stores/questions';
 import { ContentLayout } from '@/components/Layout/ContentLayout';
+import { postAllSync } from '@/utils/postAllSync';
 
 export const CreateQuestionResult = () => {
   const { questions } = useQuestionStore();
@@ -14,17 +16,16 @@ export const CreateQuestionResult = () => {
 
   const onSubmit = () => {
     if (quizId) {
-      const requests = questions.map(q => {
+      postAllSync(questions.map((q: Question) => async () => {
         const { content, choices1, choices2, choices3, choices4, answer } = q;
-        return createQuestion({ 
+        await createQuestion({ 
           quizId, 
           data: { content, choices1, choices2, choices3, choices4, answer }
         });   
+      }))
+      .then(() => {
+        navigate('../mypage/');
       });
-      Promise.all(requests)
-        .then(() => {
-          navigate("../../");
-        });
     }
   } 
 
