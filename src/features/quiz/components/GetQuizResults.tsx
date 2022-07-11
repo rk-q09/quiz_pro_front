@@ -1,5 +1,6 @@
-import { Heading, Box, Flex, Text } from '@chakra-ui/react';
-// import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import { useNavigate } from 'react-router-dom';
+import { Heading, Box, Text, Icon, HStack, Button } from '@chakra-ui/react';
+import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
 import { ContentLayout } from '@/components/Layout/ContentLayout';
 import { Quiz } from '../types/index';
@@ -11,7 +12,7 @@ type GetQuizResultsProps = {
 }
 
 export const GetQuizResults = ({ score, questions, answers }: GetQuizResultsProps) => {
-  console.log(answers);
+  const navigate = useNavigate();
 
   return (
     <ContentLayout>
@@ -19,10 +20,15 @@ export const GetQuizResults = ({ score, questions, answers }: GetQuizResultsProp
         <Heading>{score}問正解でした!!</Heading>
       </Box>
       {questions.map((q, i) => {
-        const questionIndex = ++i;
+        const questionIndex = i + 1;
+        const answer = answers[i];
+        const answerIndex = answers[i] - 1;
+
         return (
           <Box key={i} bg="gray.700" borderRadius="md" p={5} mb={3}>
-            <Heading size="md" mb={3}>第{questionIndex}問目</Heading>
+            <HStack mb={3}>
+              <Heading size="md" mb={3}>第{questionIndex}問目</Heading>
+            </HStack>
             <Box
               key={i}
               mb={3}
@@ -32,34 +38,32 @@ export const GetQuizResults = ({ score, questions, answers }: GetQuizResultsProp
             >
               {q.content}
             </Box>
-            {q.choices.map((choice, i) => { 
-              return(
-                <Flex
-                  key={i}
-                  gap={3}
-                >
-                  <Text key={i} mb={3}>{choice}</Text>
-                </Flex>
-              );
-            })}
-              {/*  <Flex 
-                  key={i} 
-                  color={q.correctAnswer === choiceIndex ? "green.500" 
-                    : answers[choiceIndex] === choiceIndex ? "red.500"
-                    : ""} 
-                  gap="2"
-                >
-                  {q.correctAnswer === choiceIndex ? <CheckIcon mt={0.5} /> 
-                    : answers[choiceIndex] === choiceIndex ? <CloseIcon mt={0.5} /> : null
-                  }
-                  <Text key={i} mb={3}>{choice}</Text>
-                </Flex>
-              */}
+            {answer === q.correctAnswer ? (
+              <HStack>
+                <Icon as={CheckIcon} color="green.400" />
+                <Text>{q.choices[q.correctAnswer]}</Text>
+              </HStack>
+            ) : (
+              <HStack>
+                <Icon as={CloseIcon} color="red.400" />
+                <Text>{q.choices[answerIndex]}</Text>
+              </HStack>
+            )}
           </Box>
         );
       })}
       <Box my={5}>
-        
+        <Button
+          width="30%"
+          bg="whiteAlpha.800"
+          color="primary.600"
+          border="2px"
+          borderColor="primary.600"
+          _hover={{ bg: 'primary.500', borderColor: 'primary.500', color: 'white' }}
+          onClick={() => navigate(-1)}
+        >
+          戻る
+        </Button>
       </Box>
     </ContentLayout>
   );

@@ -102,7 +102,7 @@ export const CreateQuestionResult = () => {
           color="primary.600"
           border="2px"
           borderColor="primary.600"
-          _hover={{ bg: 'primary.500', borderColor: 'primary.500', color: 'primary.500' }}
+          _hover={{ bg: 'primary.500', borderColor: 'primary.500', color: 'white' }}
           onClick={() => navigate(-1)}
         >
           入力画面に戻る
