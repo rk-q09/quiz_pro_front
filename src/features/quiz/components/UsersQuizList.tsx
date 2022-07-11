@@ -12,8 +12,14 @@ type UsersQuizListProps = {
 
 export const UsersQuizList = ({ userId }: UsersQuizListProps) => {
   const getCount = useCallback(getUsersQuizzesCount, [userId]);
-  const { page, perPage, sum, setPage } = usePagination<GetUsersQuizzesCountProps>({ getCountKey: { userId }, getCountWithKeyFn: getCount });
-  const { data, isLoading } = useUsersQuizzes({ userId, page, limit: perPage  });
+  const { page, perPage, sum, setPage } = usePagination<GetUsersQuizzesCountProps>(
+    { getCountKey: { userId }, getCountWithKeyFn: getCount }
+  );
+  const { data, isLoading } = useUsersQuizzes(
+  { 
+    userId, page, limit: perPage,
+    config: { keepPreviousData: true }
+  });
 
   if (isLoading) return <Spinner size="xl" />;
 

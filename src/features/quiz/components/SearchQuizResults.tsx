@@ -15,7 +15,11 @@ export const SearchQuizResults = () => {
   const getCount = useCallback(searchQuizzesCount, [word]);
   const { page, perPage, sum, setPage } = usePagination<SearchQuizzesCountProps>({ getCountKey: { word }, getCountWithKeyFn: getCount });
   
-  const { data, isLoading } = useSearchQuizzes({ word, page, limit: perPage });
+  const { data, isLoading } = useSearchQuizzes(
+  { 
+    word, page, limit: perPage, 
+    config: { keepPreviousData: true }
+  });
 
   if (isLoading) return <Spinner size="xl" />
 
