@@ -22,7 +22,7 @@ const App = () => {
   );
 };
 
-const TopPage = () => {
+export const TopPage = () => {
   const { user } = useAuth();
   let userName;
   if (user) {
