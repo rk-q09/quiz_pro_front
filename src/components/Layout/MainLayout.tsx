@@ -6,7 +6,7 @@ import {
   Heading,
   Flex,
   Container,
-  Icon,
+  IconButton,
   Divider,
   Spacer
 } from '@chakra-ui/react';
@@ -55,17 +55,26 @@ const Header = () => {
       <HStack
         alignItems="center"
       >
-        <Icon 
+        <IconButton 
           as={LogoutIcon} 
+          aria-label="logout"
           w={6} 
           h={6} 
-          mb={1}
+          size="sm"
+          bg="none"
           _hover={{ cursor: 'pointer', color: 'secondary.400' }} 
           onClick={() => onLogout()}
         />
-        <Link to="/app/quiz/mypage">
-          <Icon as={UserIcon} w={6} h={6} _hover={{ color: 'secondary.400' }}  />
-        </Link>
+        <IconButton 
+          as={UserIcon} 
+          aria-label="mypage"
+          w={6} 
+          h={6} 
+          size="sm"
+          bg="none"
+          _hover={{ color: 'secondary.400' }}  
+          onClick={() => navigate('/app/quiz/mypage')}
+        />
         <Button
           size="sm"
           variant="outline"
