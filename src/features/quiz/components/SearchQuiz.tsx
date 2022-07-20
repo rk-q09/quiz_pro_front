@@ -36,6 +36,7 @@ export const SearchQuiz = () => {
           />
           <Button 
             type="submit"
+            aria-label='search-quiz'
             bg="none"
             _hover={{ bg: 'none' }}
           >

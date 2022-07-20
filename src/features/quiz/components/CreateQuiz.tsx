@@ -52,6 +52,7 @@ export const CreateQuiz = () => {
               />
               <Button
                 isLoading={createQuizMutation.isLoading}
+                aria-label='create-quiz'
                 type="submit"
                 size="lg"
                 bg="primary.600"
