@@ -11,6 +11,13 @@ type DeleteQuizProps = {
 export const DeleteQuiz = ({ id, userId }: DeleteQuizProps) => {
   const { isLoading, mutateAsync } = useDeleteQuiz({ userId });
 
+  const handleChildElementClick = async (e: any) => {
+    e.stopPropagation();
+    if (window.confirm('本当に削除してもよいですか？')) {
+      await mutateAsync({ quizId: id });
+    }
+  };
+
   return (
     <Button
       size="sm"
@@ -18,8 +25,8 @@ export const DeleteQuiz = ({ id, userId }: DeleteQuizProps) => {
       color="black"
       _hover={{ bg: 'transparent', color: 'grey' }}
       isLoading={isLoading}
-      onClick={async () => {
-        if (window.confirm('Are you sure?')) await mutateAsync({ quizId: id });
+      onClick={async (e) => {
+        await handleChildElementClick(e);
       }}
     >
       <Icon as={TrashIcon} w={5} h={5} color="whiteAlpha.600"/>
