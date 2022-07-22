@@ -15,15 +15,16 @@ export const UsersQuizList = ({ userId }: UsersQuizListProps) => {
   const { page, perPage, sum, setPage } = usePagination<GetUsersQuizzesCountProps>(
     { getCountKey: { userId }, getCountWithKeyFn: getCount }
   );
-  const { data, isLoading } = useUsersQuizzes(
-  { 
-    userId, page, limit: perPage,
+  const { data, isLoading } = useUsersQuizzes({ 
+    userId, 
+    page, 
+    limit: perPage,
     config: { keepPreviousData: true }
   });
 
   if (isLoading) return <Spinner size="xl" />;
 
-  if (!data?.length) return <Heading>No Quizzes Found</Heading>;
+  if (!data?.length) return <Heading>No Quizzes Found</Heading>
 
   return (
     <>

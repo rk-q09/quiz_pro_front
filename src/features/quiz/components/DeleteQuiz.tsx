@@ -20,6 +20,7 @@ export const DeleteQuiz = ({ id, userId }: DeleteQuizProps) => {
 
   return (
     <Button
+      aria-label="delete-quiz"
       size="sm"
       bg="transparent"
       color="black"
