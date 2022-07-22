@@ -68,7 +68,9 @@ export const GetQuiz = () => {
 
   if (!data) return null;
   
-  if (data.questions.length === 0) return <Heading color="white">OMG</Heading>
+  if (data.questions.length === 0) return (
+    <Heading color="white">ただいまメンテナンス中です</Heading>
+  );
 
   const answerQuestionHandler = async (answer: number) => {
     if (data.questions[currentIndex].correctAnswer === answer) {
