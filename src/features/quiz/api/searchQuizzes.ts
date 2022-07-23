@@ -7,14 +7,26 @@ import { Quiz, QuizCount } from '../types';
 
 export type SearchQuizzesCountProps = {
   word: string;
-}
+};
 
-export const searchQuizzesCount = ({ word }: SearchQuizzesCountProps): Promise<QuizCount> => {
+export const searchQuizzesCount = ({
+  word,
+}: SearchQuizzesCountProps): Promise<QuizCount> => {
   return axios.get(`/quizzes/search/count?title=${word}`);
-}
+};
 
-export const searchQuizzes = ({ word, page, limit }: { word: string; page: number; limit: number; }): Promise<Quiz[]> => {
-  return axios.get(`/quizzes?title=${word}` + '&page' + page + '&limit=' + limit);
+export const searchQuizzes = ({
+  word,
+  page,
+  limit,
+}: {
+  word: string;
+  page: number;
+  limit: number;
+}): Promise<Quiz[]> => {
+  return axios.get(
+    `/quizzes?title=${word}` + '&page' + page + '&limit=' + limit
+  );
 };
 
 type UseSearchQuizzesOptions = {
@@ -24,10 +36,15 @@ type UseSearchQuizzesOptions = {
   limit: number;
 };
 
-export const useSearchQuizzes = ({ word, page, limit, config }: UseSearchQuizzesOptions) => {
+export const useSearchQuizzes = ({
+  word,
+  page,
+  limit,
+  config,
+}: UseSearchQuizzesOptions) => {
   return useQuery({
     ...config,
     queryKey: ['quizzes', word],
     queryFn: () => searchQuizzes({ word, page, limit }),
   });
-}
+};

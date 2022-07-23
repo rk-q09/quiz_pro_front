@@ -15,8 +15,13 @@ export const hash = (str: string) => {
   return String(hash >>> 0);
 };
 
-
-export function authenticate({ email, password }: { email: string, password: string }) {
+export function authenticate({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) {
   const user = db.user.findFirst({
     where: {
       email: {
@@ -53,7 +58,7 @@ export function requireAuth(request: RestRequest) {
     if (!user) {
       throw Error('Unauthorized');
     }
-    
+
     return user;
   } catch (err: any) {
     throw new Error(err);

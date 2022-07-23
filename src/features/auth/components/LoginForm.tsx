@@ -61,9 +61,7 @@ export const LoginForm = ({ onSuccess }: LoginFormProps) => {
           </Center>
           <Center mt={4}>
             <Text size="md">
-              <Link to="../register">
-                アカウントを作成する
-              </Link>
+              <Link to="../register">アカウントを作成する</Link>
             </Text>
           </Center>
         </>

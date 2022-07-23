@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { Text } from '@chakra-ui/layout';
 import { useAuth } from '@/lib/auth';
 
-import { MainLayout } from '@/components/Layout/MainLayout';
+import { MainLayout } from '@/components/Layout';
 const QuizRoutes = lazy(() => import('@/features/quiz'));
 
 const App = () => {

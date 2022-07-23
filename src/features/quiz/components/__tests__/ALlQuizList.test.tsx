@@ -10,7 +10,7 @@ test('16個のクイズが表示される', async () => {
   const page1 = container.querySelectorAll('h2');
   expect(page1).toHaveLength(16);
 
-  // 次ページに遷移すると、残りの4個が表示される 
+  // 次ページに遷移すると、残りの4個が表示される
   await userEvent.click(screen.getByRole('button', { name: /2/i }));
 
   await waitFor(() => {

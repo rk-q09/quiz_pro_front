@@ -32,7 +32,6 @@ export const Notification = ({
   notification: { id, type, title, message },
   onDismiss,
 }: NotificationProps) => {
-
   return (
     <HackyAnimatePresence>
       <MotionFlex

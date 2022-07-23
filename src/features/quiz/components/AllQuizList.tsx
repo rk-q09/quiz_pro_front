@@ -3,17 +3,18 @@ import { useQuizzes, getQuizCount } from '../api/getQuizzes';
 import { Spinner } from '@chakra-ui/react';
 
 import { QuizList } from './QuizList';
-import { Pagination } from '@/components/Pagination';
-import { usePagination } from '@/components/Pagination/hooks';
+import { Pagination, usePagination } from '@/components/Pagination';
 
 export const AllQuizList = () => {
   const getCount = useCallback(getQuizCount, []);
-  const { page, perPage, sum, setPage } = usePagination({ getCountFn: getCount }); 
-  const { data, isLoading } = useQuizzes(
-    { page, limit: perPage,
-      config: { keepPreviousData: true }
-    }
-  );
+  const { page, perPage, sum, setPage } = usePagination({
+    getCountFn: getCount,
+  });
+  const { data, isLoading } = useQuizzes({
+    page,
+    limit: perPage,
+    config: { keepPreviousData: true },
+  });
 
   if (isLoading) return <Spinner size="xl" />;
 
@@ -22,7 +23,7 @@ export const AllQuizList = () => {
   return (
     <>
       <QuizList data={data} />
-      <Pagination sum={sum} per={perPage} onChange={e => setPage(e.page)} />
+      <Pagination sum={sum} per={perPage} onChange={(e) => setPage(e.page)} />
     </>
   );
 };

@@ -26,7 +26,7 @@ export const quizzesHandlers = [
 
     const createdQuiz = db.quiz.create({
       title,
-      id: nanoid()
+      id: nanoid(),
     });
 
     return res(ctx.json(createdQuiz));
@@ -41,7 +41,7 @@ export const quizzesHandlers = [
 
     const pageStart = (page - 1) * limit;
     const pageEnd = page * limit;
-    
+
     const quizzes = db.quiz.getAll();
     const skippedQuizzes = quizzes.slice(pageStart, pageEnd);
 
@@ -50,6 +50,5 @@ export const quizzesHandlers = [
   rest.get('/api/quizzes/count', (req, res, ctx) => {
     const allQuizzes = db.quiz.getAll();
     return res(ctx.json({ count: allQuizzes.length }));
-  })
+  }),
 ];
-

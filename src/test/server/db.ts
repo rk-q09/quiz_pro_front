@@ -9,7 +9,7 @@ const models = {
     id: primaryKey(String),
     username: String,
     email: String,
-    password: String
+    password: String,
   },
   quiz: {
     id: primaryKey(String),
@@ -20,23 +20,22 @@ const models = {
       choices1: String,
       choices2: String,
       choices3: String,
-      choices4: String
-    }
-  }
+      choices4: String,
+    },
+  },
 };
 
 export const db = factory(models);
 
 db.user.create({
   ...testUser,
-  password: hash(testUser.password)
+  password: hash(testUser.password),
 });
 
 for (let i = 0; i < 20; i++) {
   db.quiz.create({
-    ...quizGenerator()
-  })
+    ...quizGenerator(),
+  });
 }
-
 
 export type Model = keyof typeof db;

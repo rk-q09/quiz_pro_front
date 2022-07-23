@@ -1,4 +1,8 @@
-import { render as rtlRender, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import {
+  render as rtlRender,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FunctionComponent } from 'react';
 
@@ -7,7 +11,6 @@ import storage from '@/utils/storage';
 import { userGenerator } from './data/data-generators';
 import { authenticate, hash } from './server/utils';
 import { db } from './server/db';
-
 
 export const createUser = () => {
   const user = userGenerator();
@@ -21,10 +24,13 @@ export const loginAsUser = (user: any) => {
   return authUser.user;
 };
 
-export const waitForLoadingToFinish = () => 
+export const waitForLoadingToFinish = () =>
   waitForElementToBeRemoved(
-    () => [...screen.queryAllByTestId(/loading/i), ...screen.queryAllByText(/loading/i)],
-      { timeout: 4000 }
+    () => [
+      ...screen.queryAllByTestId(/loading/i),
+      ...screen.queryAllByText(/loading/i),
+    ],
+    { timeout: 4000 }
   );
 
 const initializeUser = async (user: any) => {

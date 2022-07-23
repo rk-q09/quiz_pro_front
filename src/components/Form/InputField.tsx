@@ -11,7 +11,13 @@ export const InputField = (props: InputFieldProps) => {
   const { type = 'text', label, registration, error } = props;
   return (
     <FieldWrapper label={label} error={error}>
-      <Input type={type} {...registration} border="none" bg="tertiary.400" color="tertiary.900" />
+      <Input
+        type={type}
+        {...registration}
+        border="none"
+        bg="tertiary.400"
+        color="tertiary.900"
+      />
     </FieldWrapper>
   );
 };

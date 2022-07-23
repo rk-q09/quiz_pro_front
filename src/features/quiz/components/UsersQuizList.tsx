@@ -1,10 +1,13 @@
 import { useCallback } from 'react';
 import { Heading, Spinner } from '@chakra-ui/react';
 
-import { useUsersQuizzes, getUsersQuizzesCount, GetUsersQuizzesCountProps } from '../api/getUsersQuizzes';
+import {
+  useUsersQuizzes,
+  getUsersQuizzesCount,
+  GetUsersQuizzesCountProps,
+} from '../api/getUsersQuizzes';
 import { QuizList } from './QuizList';
-import { Pagination } from '@/components/Pagination';
-import { usePagination } from '@/components/Pagination/hooks';
+import { Pagination, usePagination } from '@/components/Pagination';
 
 type UsersQuizListProps = {
   userId: string;
@@ -12,24 +15,26 @@ type UsersQuizListProps = {
 
 export const UsersQuizList = ({ userId }: UsersQuizListProps) => {
   const getCount = useCallback(getUsersQuizzesCount, [userId]);
-  const { page, perPage, sum, setPage } = usePagination<GetUsersQuizzesCountProps>(
-    { getCountKey: { userId }, getCountWithKeyFn: getCount }
-  );
-  const { data, isLoading } = useUsersQuizzes({ 
-    userId, 
-    page, 
+  const { page, perPage, sum, setPage } =
+    usePagination<GetUsersQuizzesCountProps>({
+      getCountKey: { userId },
+      getCountWithKeyFn: getCount,
+    });
+  const { data, isLoading } = useUsersQuizzes({
+    userId,
+    page,
     limit: perPage,
-    config: { keepPreviousData: true }
+    config: { keepPreviousData: true },
   });
 
   if (isLoading) return <Spinner size="xl" />;
 
-  if (!data?.length) return <Heading>No Quizzes Found</Heading>
+  if (!data?.length) return <Heading>No Quizzes Found</Heading>;
 
   return (
     <>
       <QuizList data={data} userId={userId} />
-      <Pagination sum={sum} per={perPage} onChange={e => setPage(e.page)} />
+      <Pagination sum={sum} per={perPage} onChange={(e) => setPage(e.page)} />
     </>
   );
 };

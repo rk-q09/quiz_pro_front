@@ -9,12 +9,16 @@ export type GetUsersQuizzesCountProps = {
   userId: string;
 };
 
-export const getUsersQuizzesCount = ({ userId }: GetUsersQuizzesCountProps): Promise<QuizCount> => {
+export const getUsersQuizzesCount = ({
+  userId,
+}: GetUsersQuizzesCountProps): Promise<QuizCount> => {
   return axios.get(`/quizzes/users/${userId}/count`);
-}
+};
 
 export const getUsersQuizzes = ({
-  userId, page, limit
+  userId,
+  page,
+  limit,
 }: {
   userId: string;
   page: number;
@@ -30,7 +34,12 @@ type UseUsersQuizzesOptions = {
   config?: QueryConfig<typeof getUsersQuizzes>;
 };
 
-export const useUsersQuizzes = ({ userId, page, limit, config }: UseUsersQuizzesOptions) => {
+export const useUsersQuizzes = ({
+  userId,
+  page,
+  limit,
+  config,
+}: UseUsersQuizzesOptions) => {
   return useQuery({
     ...config,
     queryKey: ['quizzes', userId, String(page)],

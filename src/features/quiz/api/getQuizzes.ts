@@ -9,7 +9,13 @@ export const getQuizCount = (): Promise<QuizCount> => {
   return axios.get('/quizzes/count');
 };
 
-export const getQuizzes = ({ page, limit}: { page: number, limit?: number}): Promise<Quiz[]> => {
+export const getQuizzes = ({
+  page,
+  limit,
+}: {
+  page: number;
+  limit?: number;
+}): Promise<Quiz[]> => {
   return axios.get(`/quizzes?page=` + page + '&limit=' + limit);
 };
 
@@ -23,6 +29,6 @@ export const useQuizzes = ({ page, limit, config }: UseQuizzesOptions) => {
   return useQuery({
     ...config,
     queryKey: ['quizzes', String(page)],
-    queryFn: () => getQuizzes({page, limit}),
+    queryFn: () => getQuizzes({ page, limit }),
   });
 };

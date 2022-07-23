@@ -4,7 +4,7 @@ import * as z from 'zod';
 import { useNavigate } from 'react-router-dom';
 
 import { Form, InputField } from '@/components/Form';
-import { ContentLayout } from '@/components/Layout/ContentLayout';
+import { ContentLayout } from '@/components/Layout';
 
 import { useAuth } from '@/lib/auth';
 import { CreateQuizDTO, useCreateQuiz } from '../api/createQuiz';
@@ -52,13 +52,13 @@ export const CreateQuiz = () => {
               />
               <Button
                 isLoading={createQuizMutation.isLoading}
-                aria-label='create-quiz'
+                aria-label="create-quiz"
                 type="submit"
                 size="lg"
                 bg="primary.600"
                 _hover={{ bg: 'primary.500' }}
               >
-                <ArrowForwardIcon w={6} h={6}/>
+                <ArrowForwardIcon w={6} h={6} />
               </Button>
             </HStack>
           )}

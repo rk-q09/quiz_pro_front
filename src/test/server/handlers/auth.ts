@@ -35,10 +35,13 @@ export const authHandlers = [
       db.user.create({
         ...userObject,
         id: nanoid(),
-        password: hash(userObject.password)
+        password: hash(userObject.password),
       });
 
-      const result = authenticate({ email: userObject.email, password: userObject.password });
+      const result = authenticate({
+        email: userObject.email,
+        password: userObject.password,
+      });
 
       return res(ctx.json(result));
     } catch (error: any) {

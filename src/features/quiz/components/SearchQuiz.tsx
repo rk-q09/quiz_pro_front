@@ -6,7 +6,7 @@ import { SearchIcon } from '@heroicons/react/solid';
 import { Form } from '@/components/Form';
 
 const schema = z.object({
-  input: z.string().min(1)
+  input: z.string().min(1),
 });
 
 type SearchQuizValues = {
@@ -25,25 +25,25 @@ export const SearchQuiz = () => {
     >
       {({ register }) => (
         <Flex align="center">
-          <Input 
-            {...register("input")}
-            type="text" 
+          <Input
+            {...register('input')}
+            type="text"
             borderRadius="3xl"
             bg="tertiary.100"
             color="black"
             autoComplete="off"
             placeholder="Search quiz"
           />
-          <Button 
+          <Button
             type="submit"
-            aria-label='search-quiz'
+            aria-label="search-quiz"
             bg="none"
             _hover={{ bg: 'none' }}
           >
-            <Icon 
-              as={SearchIcon} 
-              w={6} 
-              h={6} 
+            <Icon
+              as={SearchIcon}
+              w={6}
+              h={6}
               _hover={{ cursor: 'pointer', color: 'secondary.400' }}
             />
           </Button>
@@ -51,4 +51,4 @@ export const SearchQuiz = () => {
       )}
     </Form>
   );
-}
+};

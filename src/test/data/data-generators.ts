@@ -4,7 +4,7 @@ export const userGenerator = () => ({
   id: faker.datatype.uuid(),
   username: faker.word.noun(8),
   email: faker.internet.email(),
-  password: faker.internet.password()
+  password: faker.internet.password(),
 });
 
 export const quizGenerator = () => ({
@@ -16,6 +16,6 @@ export const quizGenerator = () => ({
     choices2: faker.lorem.word(),
     choices3: faker.lorem.word(),
     choices4: faker.lorem.word(),
-    answer: 1
-  }
+    answer: 1,
+  },
 });

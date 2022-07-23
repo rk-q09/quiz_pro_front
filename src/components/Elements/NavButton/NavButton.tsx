@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
-import { Flex, Icon, Text  } from '@chakra-ui/react';
+import { Flex, Icon, Text } from '@chakra-ui/react';
 
 type NavButtonProps = {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; 
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   onClick: () => void;
   children: ReactNode;
-}
+};
 
 export const NavButton = ({ icon, onClick, children }: NavButtonProps) => {
   return (
@@ -22,13 +22,8 @@ export const NavButton = ({ icon, onClick, children }: NavButtonProps) => {
       }}
       onClick={onClick}
     >
-      {icon && (
-        <Icon
-          as={icon}
-          mr={4}
-        />
-      )}
+      {icon && <Icon as={icon} mr={4} />}
       <Text fontWeight="normal">{children}</Text>
-    </Flex> 
+    </Flex>
   );
 };

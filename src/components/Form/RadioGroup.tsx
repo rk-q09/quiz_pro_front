@@ -7,7 +7,7 @@ import {
   UseRadioProps,
   FormControl,
   FormLabel,
-  FormErrorMessage
+  FormErrorMessage,
 } from '@chakra-ui/react';
 import {
   FieldValues,
@@ -21,15 +21,16 @@ const RadioCard = (props: UseRadioProps & { children: ReactNode }) => {
   return (
     <Box as="label">
       <input {...getInputProps()} />
-      <Box {...getCheckboxProps()} 
+      <Box
+        {...getCheckboxProps()}
         cursor="pointer"
         borderWidth="1px"
         borderRadius="md"
         boxShadow="md"
-        _checked={{ 
-          bg: "primary.500",
-          borderColor: "primary.500",
-          color: 'white' 
+        _checked={{
+          bg: 'primary.500',
+          borderColor: 'primary.500',
+          color: 'white',
         }}
         px={8}
         py={3}
@@ -41,8 +42,15 @@ const RadioCard = (props: UseRadioProps & { children: ReactNode }) => {
 };
 
 export const RadioGroup = <TRadioValue extends FieldValues>(
-  props: UseControllerProps<TRadioValue> & { radioValues: string[], label: string }) => {
-  const { field, fieldState: { error } } = useController(props);
+  props: UseControllerProps<TRadioValue> & {
+    radioValues: string[];
+    label: string;
+  }
+) => {
+  const {
+    field,
+    fieldState: { error },
+  } = useController(props);
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: props.name,
@@ -60,7 +68,7 @@ export const RadioGroup = <TRadioValue extends FieldValues>(
           </RadioCard>
         ))}
       </HStack>
-      {error && (<FormErrorMessage>{error.message}</FormErrorMessage>)}
+      {error && <FormErrorMessage>{error.message}</FormErrorMessage>}
     </FormControl>
   );
 };

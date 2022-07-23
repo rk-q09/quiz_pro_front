@@ -7,7 +7,7 @@ export type Question = {
   choices3: string;
   choices4: string;
   answer: string;
-}
+};
 export type Quiz = {
   title: string;
   questions: {

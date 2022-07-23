@@ -6,8 +6,6 @@ export const publicRoutes = [
   {
     path: '/auth/*',
     element: <AuthRoutes />,
-    children: [
-      { path: '*', element: <Navigate to="." /> }
-    ]
+    children: [{ path: '*', element: <Navigate to="." /> }],
   },
 ];

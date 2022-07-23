@@ -16,10 +16,10 @@ const checkExpiration = () => {
   const expiresAt = storage.getExpires();
   if (expiresAt) {
     const isExpired = isBefore(new Date(expiresAt), new Date());
-    if (isExpired) return true
+    if (isExpired) return true;
   }
-  return false
-}
+  return false;
+};
 
 async function handleUserResponse(data: UserResponse) {
   const { user, token, expiresIn } = data;
@@ -30,7 +30,7 @@ async function handleUserResponse(data: UserResponse) {
 
 async function loadUser() {
   if (checkExpiration()) {
-    return null
+    return null;
   }
   if (storage.getToken()) {
     const data = await getUser();

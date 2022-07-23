@@ -6,7 +6,7 @@ import { useQuiz } from '../api/getQuiz';
 import { createQuestion } from '../api/createQuestion';
 import { Question } from '../types';
 import { useQuestionStore } from '@/stores/questions';
-import { ContentLayout } from '@/components/Layout/ContentLayout';
+import { ContentLayout } from '@/components/Layout';
 import { postAllSync } from '@/utils/postAllSync';
 
 export const CreateQuestionResult = () => {
@@ -16,29 +16,30 @@ export const CreateQuestionResult = () => {
 
   const onSubmit = () => {
     if (quizId) {
-      postAllSync(questions.map((q: Question) => async () => {
-        const { content, choices1, choices2, choices3, choices4, answer } = q;
-        await createQuestion({ 
-          quizId, 
-          data: { content, choices1, choices2, choices3, choices4, answer }
-        });   
-      }))
-      .then(() => {
+      postAllSync(
+        questions.map((q: Question) => async () => {
+          const { content, choices1, choices2, choices3, choices4, answer } = q;
+          await createQuestion({
+            quizId,
+            data: { content, choices1, choices2, choices3, choices4, answer },
+          });
+        })
+      ).then(() => {
         navigate('../mypage/');
       });
     }
-  } 
+  };
 
   if (questions.length === 0) {
     if (quizId) {
-      const { data, isLoading } = useQuiz({quizId});
-      
+      const { data, isLoading } = useQuiz({ quizId });
+
       if (isLoading) {
-        <p>Loading...</p>
+        <p>Loading...</p>;
       }
-      
+
       if (!data) {
-        return null
+        return null;
       }
 
       return (
@@ -50,7 +51,11 @@ export const CreateQuestionResult = () => {
             color="whiteAlpha.800"
             border="2px"
             borderColor="primary.600"
-            _hover={{ bg: 'primary.500', borderColor: 'primary.500', color: 'whiteAlpha.800' }}
+            _hover={{
+              bg: 'primary.500',
+              borderColor: 'primary.500',
+              color: 'whiteAlpha.800',
+            }}
             onClick={() => navigate(-1)}
           >
             入力画面に戻る
@@ -58,13 +63,13 @@ export const CreateQuestionResult = () => {
         </ContentLayout>
       );
     } else {
-      return null
+      return null;
     }
   }
 
   return (
     <ContentLayout>
-      <Heading mb={5}>確認画面</Heading> 
+      <Heading mb={5}>確認画面</Heading>
 
       {questions.map((q, i) => {
         const choices = [q.choices1, q.choices2, q.choices3, q.choices4];
@@ -72,22 +77,24 @@ export const CreateQuestionResult = () => {
 
         return (
           <Box key={i} bg="tertiary.700" borderRadius="md" p={5} mb={3}>
-            <Heading size="md" mb={3}>第{++i}問目</Heading>
-            <Box
-              key={i}
-              mb={3}
-              p={5}
-              bg="tertiary.600"
-              borderRadius="md"
-            >
+            <Heading size="md" mb={3}>
+              第{++i}問目
+            </Heading>
+            <Box key={i} mb={3} p={5} bg="tertiary.600" borderRadius="md">
               {q.content}
             </Box>
-            {choices.map((choice, i) => { 
+            {choices.map((choice, i) => {
               const index = ++i;
-              return(
-                <Flex key={i} color={answer === index ? "secondary.400" : ""} gap="2">
+              return (
+                <Flex
+                  key={i}
+                  color={answer === index ? 'secondary.400' : ''}
+                  gap="2"
+                >
                   {answer === index ? <CheckIcon mt={0.5} /> : null}
-                  <Text key={i} mb={3}>{choice}</Text>
+                  <Text key={i} mb={3}>
+                    {choice}
+                  </Text>
                 </Flex>
               );
             })}
@@ -102,7 +109,11 @@ export const CreateQuestionResult = () => {
           color="primary.600"
           border="2px"
           borderColor="primary.600"
-          _hover={{ bg: 'primary.500', borderColor: 'primary.500', color: 'white' }}
+          _hover={{
+            bg: 'primary.500',
+            borderColor: 'primary.500',
+            color: 'white',
+          }}
           onClick={() => navigate(-1)}
         >
           入力画面に戻る
@@ -118,4 +129,4 @@ export const CreateQuestionResult = () => {
       </Flex>
     </ContentLayout>
   );
-} 
+};

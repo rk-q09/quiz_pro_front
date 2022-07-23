@@ -2,16 +2,20 @@ import { useNavigate } from 'react-router-dom';
 import { Heading, Box, Text, Icon, HStack, Button } from '@chakra-ui/react';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
-import { ContentLayout } from '@/components/Layout/ContentLayout';
+import { ContentLayout } from '@/components/Layout';
 import { Quiz } from '../types/index';
 
 type GetQuizResultsProps = {
   score: number;
-  questions: Quiz["questions"]; 
+  questions: Quiz['questions'];
   answers: number[];
-}
+};
 
-export const GetQuizResults = ({ score, questions, answers }: GetQuizResultsProps) => {
+export const GetQuizResults = ({
+  score,
+  questions,
+  answers,
+}: GetQuizResultsProps) => {
   const navigate = useNavigate();
 
   return (
@@ -27,15 +31,11 @@ export const GetQuizResults = ({ score, questions, answers }: GetQuizResultsProp
         return (
           <Box key={i} bg="gray.700" borderRadius="md" p={5} mb={3}>
             <HStack mb={3}>
-              <Heading size="md" mb={3}>第{questionIndex}問目</Heading>
+              <Heading size="md" mb={3}>
+                第{questionIndex}問目
+              </Heading>
             </HStack>
-            <Box
-              key={i}
-              mb={3}
-              p={5}
-              bg="gray.600"
-              borderRadius="md"
-            >
+            <Box key={i} mb={3} p={5} bg="gray.600" borderRadius="md">
               {q.content}
             </Box>
             {answer === q.correctAnswer ? (
@@ -59,7 +59,11 @@ export const GetQuizResults = ({ score, questions, answers }: GetQuizResultsProp
           color="primary.600"
           border="2px"
           borderColor="primary.600"
-          _hover={{ bg: 'primary.500', borderColor: 'primary.500', color: 'white' }}
+          _hover={{
+            bg: 'primary.500',
+            borderColor: 'primary.500',
+            color: 'white',
+          }}
           onClick={() => navigate(-1)}
         >
           戻る
@@ -67,4 +71,4 @@ export const GetQuizResults = ({ score, questions, answers }: GetQuizResultsProp
       </Box>
     </ContentLayout>
   );
-}
+};

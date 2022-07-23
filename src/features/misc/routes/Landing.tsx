@@ -18,30 +18,30 @@ const container: Variants = {
     scale: 1,
     transition: {
       delayChildren: 0.3,
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 const letterAnimation: Variants = {
   hidden: { opacity: 0 },
   visible: {
-    opacity: 1
-  }
+    opacity: 1,
+  },
 };
 
 export const Landing = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const welcomeLetters = [..."Welcome to QUIZPRO"];
+  const welcomeLetters = [...'Welcome to QUIZPRO'];
 
   const headingControls = useAnimation();
   const arrowControls = useAnimation();
-  const detailControls = useAnimation(); 
+  const detailControls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.5,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   useEffect(() => {
@@ -49,24 +49,24 @@ export const Landing = () => {
       await detailControls.start({
         opacity: 1,
         transition: {
-          duration: 2
-        }
+          duration: 2,
+        },
       });
       arrowControls.start({
-        opacity: 0
+        opacity: 0,
       });
-    }
+    };
     const startAnimation = async () => {
-      await headingControls.start("visible");
+      await headingControls.start('visible');
       await arrowControls.start({
         opacity: 1,
         transition: {
-          ease: "easeInOut",
+          ease: 'easeInOut',
           duration: 2,
-          repeat: Infinity
-        }
+          repeat: Infinity,
+        },
       });
-    }
+    };
     if (inView) {
       startAnimations();
     } else {
@@ -84,34 +84,47 @@ export const Landing = () => {
 
   return (
     <>
-      <Flex align="center" justify="center" height="100vh" color="white" pos="relative">
+      <Flex
+        align="center"
+        justify="center"
+        height="100vh"
+        color="white"
+        pos="relative"
+      >
         <VStack>
-          <MotionBox initial="hidden" animate={headingControls} variants={container} mb={5}>
+          <MotionBox
+            initial="hidden"
+            animate={headingControls}
+            variants={container}
+            mb={5}
+          >
             <Heading size="4xl">
               {welcomeLetters.map((l, i) => (
-                  <motion.span key={i} variants={letterAnimation}>{l}</motion.span>
+                <motion.span key={i} variants={letterAnimation}>
+                  {l}
+                </motion.span>
               ))}
             </Heading>
           </MotionBox>
-          <MotionFlex 
-            initial={{ opacity: 0 }} 
-            animate={arrowControls} 
-            align="center" 
-            direction="column" 
+          <MotionFlex
+            initial={{ opacity: 0 }}
+            animate={arrowControls}
+            align="center"
+            direction="column"
             pos="absolute"
             bottom="10"
           >
             <Heading size="xl">Scroll</Heading>
-            <Icon as={ChevronDoubleDownIcon} h={10} w={10}/>
+            <Icon as={ChevronDoubleDownIcon} h={10} w={10} />
           </MotionFlex>
         </VStack>
       </Flex>
       <Flex align="center" justify="center" height="100vh" color="white">
-          <MotionBox ref={ref} initial={{ opacity: 0 }} animate={detailControls}>
-            <Button onClick={handleStart} colorScheme="teal">
-              get started
-            </Button>
-          </MotionBox>
+        <MotionBox ref={ref} initial={{ opacity: 0 }} animate={detailControls}>
+          <Button onClick={handleStart} colorScheme="teal">
+            get started
+          </Button>
+        </MotionBox>
       </Flex>
     </>
   );

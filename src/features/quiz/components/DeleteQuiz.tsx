@@ -30,7 +30,7 @@ export const DeleteQuiz = ({ id, userId }: DeleteQuizProps) => {
         await handleChildElementClick(e);
       }}
     >
-      <Icon as={TrashIcon} w={5} h={5} color="whiteAlpha.600"/>
+      <Icon as={TrashIcon} w={5} h={5} color="whiteAlpha.600" />
     </Button>
   );
 };

@@ -8,13 +8,10 @@ type QuestionStore = {
 
 export const useQuestionStore = create<QuestionStore>((set) => ({
   questions: [],
-  addQuestion: (question) => { 
+  addQuestion: (question) => {
     set((state) => ({
-      questions: [
-        ...state.questions,
-        { ...question },
-      ]
-    }))},
-  deleteEverything: () => set({}, true), 
+      questions: [...state.questions, { ...question }],
+    }));
+  },
+  deleteEverything: () => set({}, true),
 }));
-                                                      

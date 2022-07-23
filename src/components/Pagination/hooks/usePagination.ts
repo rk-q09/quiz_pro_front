@@ -6,13 +6,15 @@ type usePaginationProps<TGetCountKey> = {
   getCountKey?: TGetCountKey;
   getCountWithKeyFn?: (fnKey: TGetCountKey) => Promise<QuizCount>;
   getCountFn?: () => Promise<QuizCount>;
-}
+};
 
-export const usePagination = <TGetCountKey = null>({ 
-  getCountKey, getCountWithKeyFn, getCountFn 
+export const usePagination = <TGetCountKey = null>({
+  getCountKey,
+  getCountWithKeyFn,
+  getCountFn,
 }: usePaginationProps<TGetCountKey>) => {
   const [page, setPage] = useState(1);
-  const [sum ,setSum] = useState(0);
+  const [sum, setSum] = useState(0);
 
   const perPage = 16;
 
@@ -33,6 +35,6 @@ export const usePagination = <TGetCountKey = null>({
     page,
     perPage,
     sum,
-    setPage
+    setPage,
   };
-} 
+};
