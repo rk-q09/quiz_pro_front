@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { Center, Button, Text } from '@chakra-ui/react';
 
-import { Link } from '@/components/Elements/Link';
+import { Link } from '@/components/Elements';
 import { Form, InputField } from '@/components/Form';
 import { useAuth } from '@/lib/auth';
 
