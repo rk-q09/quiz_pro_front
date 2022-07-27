@@ -8,6 +8,7 @@ import {
   SearchQuizzesCountProps,
 } from '../api/searchQuizzes';
 import { QuizList } from './QuizList';
+import { ContentLayout } from '@/components/Layout';
 import { Pagination, usePagination } from '@/components/Pagination';
 
 export const SearchQuizResults = () => {
@@ -34,9 +35,9 @@ export const SearchQuizResults = () => {
   if (!data) return <Heading>No Match Results</Heading>;
 
   return (
-    <>
+    <ContentLayout>
       <QuizList data={data} />
       <Pagination sum={sum} per={perPage} onChange={(e) => setPage(e.page)} />
-    </>
+    </ContentLayout>
   );
 };

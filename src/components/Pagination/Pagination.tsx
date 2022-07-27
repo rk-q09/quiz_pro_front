@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
-import { HStack, Button } from '@chakra-ui/react';
+import { HStack, Button, Box } from '@chakra-ui/react';
 
 type PaginationProps = {
   sum: number;
@@ -121,44 +121,46 @@ export const Pagination = ({ sum, per, onChange }: PaginationProps) => {
   }
 
   return (
-    <HStack mt={5} justify="center" color="black">
-      {totalPage !== 0 && (
-        <>
-          {currentPage >= 3 ? (
-            <Button
-              _hover={{ bg: 'secondary.200' }}
-              onClick={() => handleFirst()}
-            >
-              First
-            </Button>
-          ) : null}
-          {currentPage >= 2 ? (
-            <Button
-              _hover={{ bg: 'secondary.200' }}
-              onClick={() => handleBack()}
-            >
-              &lt;
-            </Button>
-          ) : null}
-          {pages}
-          {currentPage === totalPage ? null : (
-            <Button
-              _hover={{ bg: 'secondary.200' }}
-              onClick={() => handleForward()}
-            >
-              &gt;
-            </Button>
-          )}
-          {currentPage === totalPage ? null : (
-            <Button
-              _hover={{ bg: 'secondary.200' }}
-              onClick={() => handleLast()}
-            >
-              Last
-            </Button>
-          )}
-        </>
-      )}
-    </HStack>
+    <Box my={5} >
+      <HStack mt={5} justify="center" color="black">
+        {totalPage !== 0 && (
+          <>
+            {currentPage >= 3 ? (
+              <Button
+                _hover={{ bg: 'secondary.200' }}
+                onClick={() => handleFirst()}
+              >
+                First
+              </Button>
+            ) : null}
+            {currentPage >= 2 ? (
+              <Button
+                _hover={{ bg: 'secondary.200' }}
+                onClick={() => handleBack()}
+              >
+                &lt;
+              </Button>
+            ) : null}
+            {pages}
+            {currentPage === totalPage ? null : (
+              <Button
+                _hover={{ bg: 'secondary.200' }}
+                onClick={() => handleForward()}
+              >
+                &gt;
+              </Button>
+            )}
+            {currentPage === totalPage ? null : (
+              <Button
+                _hover={{ bg: 'secondary.200' }}
+                onClick={() => handleLast()}
+              >
+                Last
+              </Button>
+            )}
+          </>
+        )}
+      </HStack>
+    </Box>
   );
 };

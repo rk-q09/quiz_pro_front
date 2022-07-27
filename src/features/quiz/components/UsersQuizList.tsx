@@ -7,6 +7,7 @@ import {
   GetUsersQuizzesCountProps,
 } from '../api/getUsersQuizzes';
 import { QuizList } from './QuizList';
+import { ContentLayout } from '@/components/Layout';
 import { Pagination, usePagination } from '@/components/Pagination';
 
 type UsersQuizListProps = {
@@ -32,9 +33,9 @@ export const UsersQuizList = ({ userId }: UsersQuizListProps) => {
   if (!data?.length) return <Heading>No Quizzes Found</Heading>;
 
   return (
-    <>
+    <ContentLayout>
       <QuizList data={data} userId={userId} />
       <Pagination sum={sum} per={perPage} onChange={(e) => setPage(e.page)} />
-    </>
+    </ContentLayout>
   );
 };
