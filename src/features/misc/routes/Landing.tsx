@@ -149,7 +149,7 @@ export const Landing = () => {
               <a
                 target="_blank"
                 rel="noreferrer"
-                href="https://github.com/rk-q09/quiz_pro_api"
+                href="https://github.com/rk-q09/quiz_pro_front"
               >
                 React App
               </a>
