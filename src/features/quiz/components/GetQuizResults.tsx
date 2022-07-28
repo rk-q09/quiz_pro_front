@@ -20,36 +20,42 @@ export const GetQuizResults = ({
 
   return (
     <ContentLayout>
-      <Box my={5}>
+      <Box mt={5} mb={8}>
         <Heading>{score}問正解でした!!</Heading>
       </Box>
       {questions.map((q, i) => {
-        const questionIndex = i + 1;
-        const answer = answers[i];
         const answerIndex = answers[i] - 1;
 
         return (
-          <Box key={i} bg="gray.700" borderRadius="md" p={5} mb={3}>
-            <HStack mb={3}>
-              <Heading size="md" mb={3}>
-                第{questionIndex}問目
-              </Heading>
-            </HStack>
-            <Box key={i} mb={3} p={5} bg="gray.600" borderRadius="md">
-              {q.content}
+          <>
+            <Heading size="sm" mt={10} mb={2} >
+              第{++i}問目
+            </Heading>
+            <Box key={i} bg="tertiary.800" borderRadius="md" mb={3} overflow="hidden" >
+              {/* ---- クイズ本文 ---- */}
+              <Box key={i} mb={3} p={5} bg="tertiary.700">
+                {q.content}
+              </Box>
+              {/* ---- 解答 ---- */}
+              {answers[i] === q.correctAnswer ? (
+                <HStack m={3}>
+                  <Icon as={CheckIcon} color="secondary.500" />
+                  <Text>{q.choices[answerIndex]}</Text>
+                </HStack>
+              ) : (
+                <>
+                  <HStack m={3}>
+                    <Icon as={CloseIcon} color="red.400" />
+                    <Text>{q.choices[answerIndex]}</Text>
+                  </HStack>
+                  <HStack m={3} gap={1}>
+                    <Text>正解は...</Text>
+                    <Text>{q.choices[q.correctAnswer - 1]}</Text>
+                  </HStack>
+                </>
+              )}
             </Box>
-            {answer === q.correctAnswer ? (
-              <HStack>
-                <Icon as={CheckIcon} color="green.400" />
-                <Text>{q.choices[q.correctAnswer]}</Text>
-              </HStack>
-            ) : (
-              <HStack>
-                <Icon as={CloseIcon} color="red.400" />
-                <Text>{q.choices[answerIndex]}</Text>
-              </HStack>
-            )}
-          </Box>
+          </>
         );
       })}
       <Box my={5}>

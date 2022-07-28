@@ -76,29 +76,32 @@ export const CreateQuestionResult = () => {
         const answer = Number(q.answer);
 
         return (
-          <Box key={i} bg="tertiary.700" borderRadius="md" p={5} mb={3}>
-            <Heading size="md" mb={3}>
+          <>
+            <Heading size="md" mt={10} mb={3}>
               第{++i}問目
             </Heading>
-            <Box key={i} mb={3} p={5} bg="tertiary.600" borderRadius="md">
-              {q.content}
+            <Box key={i} bg="tertiary.700" borderRadius="md" mb={3}>
+              <Box key={i} mb={3} p={5} bg="tertiary.600" borderRadius="md">
+                {q.content}
+              </Box>
+              {choices.map((choice, i) => {
+                const index = ++i;
+                return (
+                  <Flex
+                    key={i}
+                    color={answer === index ? 'secondary.400' : ''}
+                    gap="2"
+                    m={3}
+                  >
+                    {answer === index ? <CheckIcon mt={0.5} /> : null}
+                    <Text key={i} mb={3}>
+                      {choice}
+                    </Text>
+                  </Flex>
+                );
+              })}
             </Box>
-            {choices.map((choice, i) => {
-              const index = ++i;
-              return (
-                <Flex
-                  key={i}
-                  color={answer === index ? 'secondary.400' : ''}
-                  gap="2"
-                >
-                  {answer === index ? <CheckIcon mt={0.5} /> : null}
-                  <Text key={i} mb={3}>
-                    {choice}
-                  </Text>
-                </Flex>
-              );
-            })}
-          </Box>
+          </>
         );
       })}
 
