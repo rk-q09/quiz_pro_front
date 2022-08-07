@@ -25,15 +25,16 @@ export const GetQuizResults = ({
       </Box>
       {questions.map((q, i) => {
         const answerIndex = answers[i] - 1;
+        const questionIndex = i + 1;
 
         return (
-          <>
-            <Heading size="sm" mt={10} mb={2} >
-              第{++i}問目
+          <Box key={i}>
+            <Heading size="sm" mt={10} mb={2}>
+              第{questionIndex}問目
             </Heading>
-            <Box key={i} bg="tertiary.800" borderRadius="md" mb={3} overflow="hidden" >
+            <Box bg="tertiary.800" borderRadius="md" mb={3} overflow="hidden">
               {/* ---- クイズ本文 ---- */}
-              <Box key={i} mb={3} p={5} bg="tertiary.700">
+              <Box mb={3} p={5} bg="tertiary.700">
                 {q.content}
               </Box>
               {/* ---- 解答 ---- */}
@@ -55,7 +56,7 @@ export const GetQuizResults = ({
                 </>
               )}
             </Box>
-          </>
+          </Box>
         );
       })}
       <Box my={5}>
