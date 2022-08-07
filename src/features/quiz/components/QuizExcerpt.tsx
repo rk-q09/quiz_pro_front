@@ -20,7 +20,7 @@ export const QuizExcerpt = ({ id, userId, title }: QuizExcerptProps) => {
       p={5}
       h={100}
       _hover={{ bg: 'primary.600', cursor: 'pointer' }}
-      onClick={() => navigate(`../${id}`)}
+      onClick={() => navigate(`/app/quiz/${id}`)}
     >
       <Heading as="h2" size="md">
         {title}
