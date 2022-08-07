@@ -144,7 +144,12 @@ export const Landing = () => {
               </a>
             </Flex>
 
-            <Flex align="center" gap={3} mr={5} fontSize={{ base: 'xs', md: 'sm' }}>
+            <Flex
+              align="center"
+              gap={3}
+              mr={5}
+              fontSize={{ base: 'xs', md: 'sm' }}
+            >
               <Icon as={GoMarkGithub} w={8} h={8} />
               <a
                 target="_blank"
