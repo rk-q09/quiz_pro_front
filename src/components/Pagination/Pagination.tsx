@@ -121,7 +121,7 @@ export const Pagination = ({ sum, per, onChange }: PaginationProps) => {
   }
 
   return (
-    <Box my={5} >
+    <Box my={5}>
       <HStack mt={5} justify="center" color="black">
         {totalPage !== 0 && (
           <>

@@ -4,7 +4,7 @@ import { Text } from '@chakra-ui/layout';
 import { useAuth } from '@/lib/auth';
 
 import { MainLayout } from '@/components/Layout';
-import AllQuizList  from '@/features/quiz';
+import AllQuizList from '@/features/quiz';
 const QuizRoutes = lazy(() => import('@/features/quiz'));
 
 const App = () => {
